@@ -15,6 +15,9 @@ const Total = (props) => {
     <p>good {props.good}</p>
     <p>neutral {props.neutral}</p>
     <p>bad {props.bad}</p>
+    <p>all {props.sum}</p>
+    <p>average {props.average}</p>
+    <p>positive {props.positive}</p>
     </div>
   )
 }
@@ -26,6 +29,10 @@ const App = (props) => {
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
 
+  const sum = good+neutral+bad 
+  const average = (good-bad)/sum
+  const positive =  good/sum
+
   return (
     <div>
       <FeedbackHeader />
@@ -33,7 +40,7 @@ const App = (props) => {
       <Button handleClick={() => setNeutral(neutral + 1)} text="neutral" />
       <Button handleClick={() => setBad(bad + 1)} text="bad" />
       <StatisticsHeader />
-      <Total good={good} neutral={neutral} bad={bad}/>
+      <Total good={good} neutral={neutral} bad={bad} sum={sum} average={average} positive={positive} />
     </div>
   )
 }
