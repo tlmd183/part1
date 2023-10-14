@@ -10,6 +10,14 @@ const Button = (props) => (
 )
 
 const Total = (props) => {
+  if (props.sum === 0) {
+    return (
+      <div>
+        No feedback given
+      </div>
+    )
+  }
+
   return (
     <div>
     <p>good {props.good}</p>
