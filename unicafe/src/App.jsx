@@ -9,6 +9,12 @@ const Button = (props) => (
   </button>
 )
 
+const StatisticsLine = (props) => {
+  return (
+    <p>{props.statistic} {props.value}</p>
+  )
+}
+
 const Total = (props) => {
   if (props.sum === 0) {
     return (
@@ -20,12 +26,12 @@ const Total = (props) => {
 
   return (
     <div>
-    <p>good {props.good}</p>
-    <p>neutral {props.neutral}</p>
-    <p>bad {props.bad}</p>
-    <p>all {props.sum}</p>
-    <p>average {props.average}</p>
-    <p>positive {props.positive}</p>
+    <StatisticsLine statistic="good" value={props.good} />
+    <StatisticsLine statistic="neutral" value={props.neutral} />
+    <StatisticsLine statistic="bad" value={props.bad} />
+    <StatisticsLine statistic="all" value={props.sum} />
+    <StatisticsLine statistic="average" value={props.average} />
+    <StatisticsLine statistic="positive" value={props.positive} />
     </div>
   )
 }
@@ -48,7 +54,7 @@ const App = (props) => {
       <Button handleClick={() => setNeutral(neutral + 1)} text="neutral" />
       <Button handleClick={() => setBad(bad + 1)} text="bad" />
       <StatisticsHeader />
-      <Total good={good} neutral={neutral} bad={bad} sum={sum} average={average} positive={positive} />
+      <Total good={good} neutral={neutral} bad={bad} sum={sum}average={average} positive={positive} />
     </div>
   )
 }
